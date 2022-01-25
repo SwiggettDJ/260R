@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,8 +19,13 @@ public class PlayerController : MonoBehaviour
     private bool isTouching = false;
     private Vector2 touchStart;
     private Vector2 touchEnd;
+    
+    public Image joystick;
+    public Image joystickOutline;
 
     private Vector3 mousePos;
+
+    public float joystickRadius;
     
     // Update is called once per frame
     void Update()
@@ -27,6 +33,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = Input.mousePosition;
+            joystick.transform.position = touchStart;
+            joystickOutline.transform.position = touchStart;
+            joystick.enabled = true;
+            joystickOutline.enabled = true;
         }
 
         if (Input.GetMouseButton(0))
@@ -37,6 +47,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             isTouching = false;
+            joystick.enabled = false;
+            joystickOutline.enabled = false;
         }
         
         
@@ -51,8 +63,8 @@ public class PlayerController : MonoBehaviour
         
         //moveDirection = new Vector3(horizontal, 0f, vertical);
 
-        Vector2 lookDirection = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        //Vector2 lookDirection = mousePos - rb.position;
+        //float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         transform.LookAt(new Vector3(mousePos.x,transform.position.y,mousePos.z));
         
     }
@@ -65,6 +77,8 @@ public class PlayerController : MonoBehaviour
             Vector2 clamped = Vector2.ClampMagnitude(offset, 1.0f);
             moveDirection = new Vector3(clamped.x, 0f, clamped.y);
             MovePlayer();
+
+            joystick.transform.position = new Vector2(touchStart.x + moveDirection.x * joystickRadius, touchStart.y + moveDirection.z * joystickRadius);
         }
 
         
