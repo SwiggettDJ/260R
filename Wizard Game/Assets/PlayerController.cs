@@ -10,18 +10,36 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
 
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float rotateSpeed;
     [SerializeField] private Camera cam;
 
     private float horizontal;
     private float vertical;
     private Vector3 moveDirection;
+    private bool isTouching = false;
+    private Vector2 touchStart;
+    private Vector2 touchEnd;
 
     private Vector3 mousePos;
     
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStart = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            isTouching = true;
+            touchEnd = Input.mousePosition;
+        }
+        else
+        {
+            isTouching = false;
+        }
+        
+        
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -31,7 +49,7 @@ public class PlayerController : MonoBehaviour
             mousePos = raycastHit.point;
         }
         
-        moveDirection = new Vector3(horizontal, 0f, vertical);
+        //moveDirection = new Vector3(horizontal, 0f, vertical);
 
         Vector2 lookDirection = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
@@ -40,6 +58,19 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        if (isTouching)
+        {
+            Vector2 offset = touchEnd - touchStart;
+            Vector2 clamped = Vector2.ClampMagnitude(offset, 1.0f);
+            moveDirection = new Vector3(clamped.x, 0f, clamped.y);
+            MovePlayer();
+        }
+
+        
+    }
+
+    private void MovePlayer()
     {
         rb.velocity = moveDirection * speed;
     }
