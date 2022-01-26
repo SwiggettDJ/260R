@@ -347,7 +347,6 @@ MonoBehaviour:
   controller: {fileID: 0}
   rb: {fileID: 344363386}
   speed: 5
-  cam: {fileID: 963194227}
   joystick: {fileID: 65740373}
   joystickOutline: {fileID: 1018000496}
   joystickRadius: 100
