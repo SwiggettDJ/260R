@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -26,26 +25,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            touchStart = Input.mousePosition;
-            joystick.transform.position = touchStart;
-            joystickOutline.transform.position = touchStart;
-            joystick.enabled = true;
-            joystickOutline.enabled = true;
-        }
+            Touch firstTouch = Input.GetTouch(0);
+            
+            // Makes it so player can only use touchpad on left side of screen so it doesnt overlap with buttons
+            if (firstTouch.phase == TouchPhase.Began & firstTouch.position.x < Screen.width * .75f)
+            {
 
-        if (Input.GetMouseButton(0))
-        {
-            isTouching = true;
-            touchEnd = Input.mousePosition;
+                    touchStart = firstTouch.position;
+                    joystick.transform.position = touchStart;
+                    joystickOutline.transform.position = touchStart;
+                    joystick.enabled = true;
+                    joystickOutline.enabled = true;
+                    isTouching = true;
+                    
+                    //Debug.DrawLine(rb.position,touchStart, Color.red, 2);
+            }
+                
+
+            if (firstTouch.phase == TouchPhase.Moved)
+            {
+                touchEnd = firstTouch.position;
+            }
+            
+            if(firstTouch.phase == TouchPhase.Ended)
+            {
+                isTouching = false;
+                joystick.enabled = false;
+                joystickOutline.enabled = false;
+            }
+            
         }
-        else
-        {
-            isTouching = false;
-            joystick.enabled = false;
-            joystickOutline.enabled = false;
-        }
+        
     }
 
     private void FixedUpdate()
@@ -71,4 +83,5 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveDirection * speed;
         transform.LookAt(lookDirection);
     }
+    
 }
