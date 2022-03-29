@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public Rigidbody rb;
+    public Animator anim;
 
     [SerializeField] private float speed = 5f;
 
@@ -47,13 +48,15 @@ public class PlayerController : MonoBehaviour
             if (firstTouch.phase == TouchPhase.Moved)
             {
                 touchEnd = firstTouch.position;
+                anim.SetBool("isRunning", true);
             }
-            
+
             if(firstTouch.phase == TouchPhase.Ended)
             {
                 isTouching = false;
                 joystick.enabled = false;
                 joystickOutline.enabled = false;
+                anim.SetBool("isRunning", false);
             }
             
         }

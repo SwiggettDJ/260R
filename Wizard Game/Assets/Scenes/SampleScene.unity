@@ -539,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   rb: {fileID: 344363386}
+  anim: {fileID: 651958000}
   speed: 6
   joystick: {fileID: 65740373}
   joystickOutline: {fileID: 1018000496}
@@ -695,6 +696,11 @@ CanvasRenderer:
 --- !u!1 &651957999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d5a0cc5995b6b648ad86e3adf34e9ea, type: 3}
+  m_PrefabInstance: {fileID: 1891471755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &651958000 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8d5a0cc5995b6b648ad86e3adf34e9ea, type: 3}
   m_PrefabInstance: {fileID: 1891471755}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &651958001 stripped
@@ -1639,6 +1645,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3acd12834a868ce4da38111127e5a3c0, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 8d5a0cc5995b6b648ad86e3adf34e9ea, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d5a0cc5995b6b648ad86e3adf34e9ea, type: 3}
 --- !u!1 &1901351952
