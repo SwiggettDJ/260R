@@ -4,9 +4,8 @@
     <list default="true" id="3b7aa218-0da4-454b-b90a-3a5a8b1e3aad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LavaSpell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LavaSpell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/LavaSpell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/LavaSpell.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/SimpleSpell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/SimpleSpell.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/lavaTrail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/lavaTrail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpellBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SpellBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +17,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/SpellManagerBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SimpleSpell.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SpellBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SimpleSpell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SpellBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LavaSpell.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="27Ty6GqPIHYv5ZYvPzDx6NFSaYF" />
@@ -44,6 +43,7 @@
       <updated>1649358199972</updated>
       <workItem from="1649358215269" duration="5083000" />
       <workItem from="1649365145788" duration="897000" />
+      <workItem from="1649370850602" duration="1460000" />
     </task>
     <servers />
   </component>

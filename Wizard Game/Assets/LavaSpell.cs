@@ -12,13 +12,7 @@ public class LavaSpell : SpellBase
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
-    public override void OnTriggerEnter (Collider other) {
-        if (!other.CompareTag("Player"))
-        {
-            Instantiate(onHitEffect, transform.position,  transform.rotation * Quaternion.Euler(180,0,0));
-            other.attachedRigidbody.AddExplosionForce(knockback, transform.position,20);
-            transform.DetachChildren();
-            Destroy(gameObject);
-        }
-    }
+    //public override void OnTriggerEnter (Collider other) {
+        //if (!other.CompareTag("Player")){}}
+
 }
