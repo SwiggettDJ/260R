@@ -15,7 +15,10 @@ public class LavaSpell : SpellBase
     public override void OnTriggerEnter (Collider other) {
         if (!other.CompareTag("Player"))
         {
-            print(knockback);
+            Instantiate(onHitEffect, transform.position,  transform.rotation * Quaternion.Euler(180,0,0));
+            other.attachedRigidbody.AddExplosionForce(knockback, transform.position,20);
+            transform.DetachChildren();
+            Destroy(gameObject);
         }
     }
 }
