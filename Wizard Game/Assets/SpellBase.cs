@@ -8,12 +8,13 @@ using UnityEngine;
 public abstract class SpellBase : MonoBehaviour
 {
     private float damage;
+    public float knockback = 0f;
     public ParticleSystem spellEffect;
     public ParticleSystem onHitEffect;
     public float speed = 15;
     public float lifeTime = 2;
     public SphereCollider cldr;
-
+    
     void Start()
     {
         cldr = GetComponent<SphereCollider>();
@@ -35,6 +36,7 @@ public abstract class SpellBase : MonoBehaviour
         if (!other.CompareTag("Player"))
         {
             Instantiate(onHitEffect, transform.position,  transform.rotation * Quaternion.Euler(180,0,0));
+            other.attachedRigidbody.AddExplosionForce(knockback, transform.position,20);
             transform.DetachChildren();
             Destroy(gameObject);
         }

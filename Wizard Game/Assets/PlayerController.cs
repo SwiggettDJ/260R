@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public CharacterController controller;
     public Rigidbody rb;
     public Animator anim;
 
