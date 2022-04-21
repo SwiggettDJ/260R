@@ -595,20 +595,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "b96f5a75de424cb3b935e0c745056369"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "36e1db5b47fb4f038ac0a016c59dcea9"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "c5433edaf7dc494b9ef06ed65ad136fd"
                 },
                 "m_SlotId": 2
@@ -4505,8 +4491,8 @@
     "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 1.0,
-        "y": 1.0
+        "x": 5.0,
+        "y": 5.0
     },
     "m_DefaultValue": {
         "x": 0.0,
