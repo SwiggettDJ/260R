@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,12 +17,14 @@ public class PlayerController : MonoBehaviour
     private bool isTouching = false;
     private Vector2 touchStart;
     private Vector2 touchEnd;
-    
+    private Vector3 velocityTemp;
+
     public Image joystick;
     public Image joystickOutline;
 
     public float joystickRadius;
     
+
     // Update is called once per frame
     void Update()
     {
@@ -70,19 +73,22 @@ public class PlayerController : MonoBehaviour
             Vector2 clamped = Vector2.ClampMagnitude(offset, 1.0f);
             moveDirection = new Vector3(clamped.x, 0f, clamped.y);
             
-
             joystick.transform.position = new Vector2(touchStart.x + moveDirection.x * joystickRadius, touchStart.y + moveDirection.z * joystickRadius);
-            lookDirection = rb.position + moveDirection;
-            
-            MovePlayer();
         }
-
-        
+        else
+        {
+            moveDirection = (moveDirection * .5f);
+            //if (moveDirection)
+        }
+        MovePlayer();
     }
 
     private void MovePlayer()
     {
-        rb.velocity = moveDirection * speed;
+        lookDirection = rb.position + moveDirection;
+        velocityTemp = moveDirection * speed;
+        velocityTemp.y = rb.velocity.y;
+        rb.velocity = velocityTemp;
         transform.LookAt(lookDirection);
     }
     
