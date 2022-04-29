@@ -65,6 +65,8 @@ MonoBehaviour:
   speed: 10
   lifeTime: 2
   cldr: {fileID: 5904628333841993737}
+  puddleChance: 5
+  lavaPuddle: {fileID: 799715125405923998, guid: 4e9328437bf5c3c4ab4c830d518b0feb, type: 3}
 --- !u!1001 &2744692756717943368
 PrefabInstance:
   m_ObjectHideFlags: 0

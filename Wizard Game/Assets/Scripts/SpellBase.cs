@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 
 public abstract class SpellBase : MonoBehaviour
 {
-    private float damage;
+    protected float damage;
     public float fireRate = .5f;
     public float knockback = 0f;
     public ParticleSystem spellEffect;
