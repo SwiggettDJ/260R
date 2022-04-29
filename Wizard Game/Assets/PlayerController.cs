@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public Image joystickOutline;
 
     public float joystickRadius;
-    
+
 
     // Update is called once per frame
     void Update()
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
             Touch firstTouch = Input.GetTouch(0);
             
             // Makes it so player can only use touchpad on left side of screen so it doesnt overlap with buttons
-            if (firstTouch.phase == TouchPhase.Began & firstTouch.position.x < Screen.width * .75f)
+            if (firstTouch.phase == TouchPhase.Began & firstTouch.position.x < Screen.width * .7f)
             {
 
                     touchStart = firstTouch.position;
@@ -50,15 +50,11 @@ public class PlayerController : MonoBehaviour
             if (firstTouch.phase == TouchPhase.Moved)
             {
                 touchEnd = firstTouch.position;
-                anim.SetBool("isRunning", true);
             }
 
             if(firstTouch.phase == TouchPhase.Ended)
             {
-                isTouching = false;
-                joystick.enabled = false;
-                joystickOutline.enabled = false;
-                anim.SetBool("isRunning", false);
+                HideJoystick();
             }
             
         }
@@ -77,10 +73,27 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            moveDirection = (moveDirection * .5f);
-            //if (moveDirection)
+            //Slow down gradually then stop
+            if (rb.velocity.magnitude >= 0.2)
+            {
+                moveDirection = (moveDirection * .5f);
+            }
+            else
+            {
+                moveDirection = moveDirection * 0;
+            }
+            
         }
         MovePlayer();
+
+        if (rb.velocity.magnitude >= 0.5f)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
     }
 
     private void MovePlayer()
@@ -91,5 +104,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = velocityTemp;
         transform.LookAt(lookDirection);
     }
-    
+
+    public void HideJoystick()
+    {
+        isTouching = false;
+        joystick.enabled = false;
+        joystickOutline.enabled = false;
+    }
+
 }

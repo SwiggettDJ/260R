@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc346fc7886bec4cbdca302c511fade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 300
+  fireRate: 0.2
+  knockback: 400
   spellEffect: {fileID: 5787541086694767831}
   onHitEffect: {fileID: 3281559149225290237, guid: 2eba9c81d4bf42948b67802e2f7ab32d, type: 3}
-  speed: 15
+  speed: 20
   lifeTime: 2
-  cldr: {fileID: 0}
+  cldr: {fileID: 2122539515}
 --- !u!135 &2122539515
 SphereCollider:
   m_ObjectHideFlags: 0

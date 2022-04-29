@@ -8,6 +8,7 @@ using UnityEngine;
 public abstract class SpellBase : MonoBehaviour
 {
     private float damage;
+    public float fireRate = .5f;
     public float knockback = 0f;
     public ParticleSystem spellEffect;
     public ParticleSystem onHitEffect;

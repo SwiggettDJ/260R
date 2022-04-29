@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class LavaSpell : SpellBase
 {
-    void Update()
+    private void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }

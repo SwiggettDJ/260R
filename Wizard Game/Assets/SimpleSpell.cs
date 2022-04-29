@@ -7,9 +7,17 @@ using UnityEngine.UIElements;
 
 public class SimpleSpell : SpellBase
 {
-    void Update()
+    private float currentSpeed;
+    private float acceleration;
+    private void Start()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        currentSpeed = speed * .4f;
+        acceleration = speed * 2;
     }
-    
+
+    private void Update()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed);
+        currentSpeed += acceleration * Time.deltaTime;
+    }
 }
