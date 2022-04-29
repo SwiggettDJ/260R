@@ -13,6 +13,7 @@ public class SimpleSpell : SpellBase
     {
         currentSpeed = speed * .4f;
         acceleration = speed * 2;
+        damage = 15;
     }
 
     private void Update()

@@ -5,11 +5,21 @@ using UnityEngine;
 
 public class LavaPool : MonoBehaviour
 {
+    private float damage = 5f;
     private float lifeTime = 5f;
-
+    
     private void OnTriggerStay(Collider other)
     {
-        //print(other.name);
+        EnemyHealth enemyHP = other.GetComponent<EnemyHealth>();
+        if(enemyHP != null)
+        {
+            enemyHP.Damage(damage * Time.deltaTime);
+        }
+        EnemyController enemy = other.GetComponent<EnemyController>();
+        if(enemy != null)
+        {
+            enemy.SetSpeed(enemy.speed/2);
+        }
     }
     private void OnEnable()
     {

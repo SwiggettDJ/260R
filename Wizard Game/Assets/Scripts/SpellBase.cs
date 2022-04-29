@@ -34,6 +34,12 @@ public abstract class SpellBase : MonoBehaviour
     public virtual void OnTriggerEnter (Collider other) {
         if (!other.CompareTag("Player"))
         {
+            EnemyHealth enemyHP = other.GetComponent<EnemyHealth>();
+            if(enemyHP != null)
+            {
+                enemyHP.Damage(damage);
+            }
+            
 			spellEffect.Stop();
             Instantiate(onHitEffect, transform.position,  transform.rotation * Quaternion.Euler(180,0,0));
             other.attachedRigidbody.AddExplosionForce(knockback, transform.position,20);

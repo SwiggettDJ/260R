@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         lookDirection = rb.position + moveDirection;
-        velocityTemp = moveDirection * speed;
+        velocityTemp = moveDirection * (speed * 10f) * Time.deltaTime;
         velocityTemp.y = rb.velocity.y;
         rb.velocity = velocityTemp;
         transform.LookAt(lookDirection);

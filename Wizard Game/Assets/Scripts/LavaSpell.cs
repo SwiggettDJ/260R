@@ -10,6 +10,7 @@ public class LavaSpell : SpellBase
     private void Start()
     {
         puddleChance = 10;
+        damage = 20;
     }
     private void Update()
     {
@@ -20,10 +21,7 @@ public class LavaSpell : SpellBase
     {
         if (!other.CompareTag("Player"))
         {
-            spellEffect.Stop();
-            Instantiate(onHitEffect, transform.position, transform.rotation * Quaternion.Euler(180, 0, 0));
-            other.attachedRigidbody.AddExplosionForce(knockback, transform.position, 20);
-            transform.DetachChildren();
+            base.OnTriggerEnter(other);
             
             //Chance to spawn a lava puddle on impact
             int numberRoll = Random.Range(1, 11);
