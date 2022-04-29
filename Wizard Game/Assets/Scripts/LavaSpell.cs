@@ -9,7 +9,7 @@ public class LavaSpell : SpellBase
 
     private void Start()
     {
-        puddleChance = 10;
+        puddleChance = 3;
         damage = 20;
     }
     private void Update()

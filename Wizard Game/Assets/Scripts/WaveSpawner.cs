@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class WaveSpawner : MonoBehaviour {
+public class WaveSpawner : MonoBehaviour
+{
 
-	public enum SpawnState { SPAWNING, WAITING, COUNTING };
+	public GameAction winAction;
+	public enum SpawnState { SPAWNING, WAITING, COUNTING, DONE };
 
 	[System.Serializable]
 	public class Wave
@@ -64,7 +66,7 @@ public class WaveSpawner : MonoBehaviour {
 
 		if (waveCountdown <= 0)
 		{
-			if (state != SpawnState.SPAWNING)
+			if (state != SpawnState.SPAWNING && state != SpawnState.DONE)
 			{
 				StartCoroutine( SpawnWave ( waves[nextWave] ) );
 			}
@@ -84,8 +86,9 @@ public class WaveSpawner : MonoBehaviour {
 
 		if (nextWave + 1 > waves.Length - 1)
 		{
-			nextWave = 0;
-			Debug.Log("ALL WAVES COMPLETE! Looping...");
+			Debug.Log("ALL WAVES COMPLETE!");
+			winAction.raiseNoArgs();
+			state = SpawnState.DONE;
 		}
 		else
 		{

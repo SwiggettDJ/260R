@@ -23,13 +23,16 @@ public class PlayerController : MonoBehaviour
     public Image joystickOutline;
 
     public float joystickRadius;
+    public Joystick stick;
 
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.touchCount > 0)
         {
+
             Touch firstTouch = Input.GetTouch(0);
             
             // Makes it so player can only use touchpad on left side of screen so it doesnt overlap with buttons
@@ -57,12 +60,44 @@ public class PlayerController : MonoBehaviour
                 HideJoystick();
             }
             
-        }
+        } */
         
-    }
+    } 
 
     private void FixedUpdate()
     {
+        Vector3 direction = new Vector3(stick.Horizontal * (speed * 10) * Time.deltaTime, rb.velocity.y, stick.Vertical * (speed * 10) * Time.deltaTime);
+        if (direction.normalized != Vector3.zero)
+        {
+            rb.velocity = direction;
+            if (rb.velocity.magnitude >= 0.5f)
+            {
+                anim.SetBool("isRunning", true);
+                anim.speed = new Vector2(stick.Horizontal,stick.Vertical).magnitude;
+            }
+            else
+            {
+                anim.speed = 1;
+                anim.SetBool("isRunning", false);
+            }
+           
+        }
+        else
+        {
+            if (rb.velocity.magnitude >= 1)
+            {
+                velocityTemp = (rb.velocity * .9f);
+                velocityTemp.y = rb.velocity.y;
+                rb.velocity = velocityTemp;
+            }
+            anim.speed = 1;
+            anim.SetBool("isRunning", false);
+        }
+        //rb.velocity = direction;
+        transform.LookAt(rb.position + new Vector3(direction.x, 0f, direction.z));
+        
+        
+        /*
         if (isTouching)
         {
             Vector2 offset = touchEnd - touchStart;
@@ -94,6 +129,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
+        */
     }
 
     private void MovePlayer()

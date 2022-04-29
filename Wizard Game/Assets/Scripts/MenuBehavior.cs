@@ -18,12 +18,13 @@ public class MenuBehavior : MonoBehaviour
     
     public void OpenMainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
     }
     
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Arena");
+        Time.timeScale = 1f;
     }
 
 }
