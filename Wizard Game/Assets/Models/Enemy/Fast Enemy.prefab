@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1226148718724009775}
   - component: {fileID: 1226148718724009776}
   m_Layer: 0
-  m_Name: Small Enemy
+  m_Name: Fast Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  speed: 10
+  speed: 30

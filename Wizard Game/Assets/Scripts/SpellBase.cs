@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class SpellBase : MonoBehaviour
 {
     protected float damage;
-    public float fireRate = .5f;
+    protected float fireRate = .5f;
     public float knockback = 0f;
     public ParticleSystem spellEffect;
     public ParticleSystem onHitEffect;
@@ -46,5 +46,10 @@ public abstract class SpellBase : MonoBehaviour
             transform.DetachChildren();
             Destroy(gameObject);
         }
+    }
+
+    public float GetFireRate()
+    {
+        return fireRate;
     }
 }

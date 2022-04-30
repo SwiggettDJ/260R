@@ -1,16 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class LavaSpell : SpellBase
 {
-    private int puddleChance;
-    public GameObject lavaPuddle;
+    private int puddleChance = 3;
+    [NonSerialized] public int puddleDamageUp = 0;
+    public LavaPool lavaPuddle;
+    private LavaPool puddle;
 
     private void Start()
     {
-        puddleChance = 3;
-        damage = 20;
+        damage = 20f;
+        fireRate = 1f;
     }
     private void Update()
     {
@@ -28,11 +32,20 @@ public class LavaSpell : SpellBase
             Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 50, LayerMask.GetMask("Ground"));
             if (numberRoll <= puddleChance)
             {
-                Instantiate(lavaPuddle, hit.point, transform.rotation);
+                puddle = Instantiate(lavaPuddle, hit.point, transform.rotation);
+                for (int i = 0; i < puddleDamageUp; i++)
+                {
+                    puddle.UpgradeLavaDamage();
+                }
             }
-            
+
             Destroy(gameObject);
         }
+    }
+    public void UpgradeSpawnRate()
+    {
+        puddleChance += 2;
+
     }
 
 }

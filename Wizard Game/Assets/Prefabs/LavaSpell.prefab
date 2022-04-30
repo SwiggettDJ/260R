@@ -59,14 +59,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1a449e06560c9428d82eb2a86afe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
   knockback: 200
   spellEffect: {fileID: 468520364}
   onHitEffect: {fileID: 3281559149225290237, guid: 4451488231daf4d448db8552d24a7da2, type: 3}
   speed: 10
   lifeTime: 2
   cldr: {fileID: 5904628333841993737}
-  lavaPuddle: {fileID: 799715125405923998, guid: 4e9328437bf5c3c4ab4c830d518b0feb, type: 3}
+  puddleDamageUp: 0
+  lavaPuddle: {fileID: -3866267527822341223, guid: 4e9328437bf5c3c4ab4c830d518b0feb, type: 3}
 --- !u!1001 &2744692756717943368
 PrefabInstance:
   m_ObjectHideFlags: 0

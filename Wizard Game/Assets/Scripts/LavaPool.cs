@@ -31,4 +31,9 @@ public class LavaPool : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
+    
+    public void UpgradeLavaDamage()
+    {
+        damage += 5f;
+    }
 }

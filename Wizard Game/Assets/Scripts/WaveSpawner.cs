@@ -5,6 +5,7 @@ public class WaveSpawner : MonoBehaviour
 {
 
 	public GameAction winAction;
+	public GameAction upgradeAction;
 	public enum SpawnState { SPAWNING, WAITING, COUNTING, DONE };
 
 	[System.Serializable]
@@ -57,6 +58,10 @@ public class WaveSpawner : MonoBehaviour
 			if (!EnemyIsAlive())
 			{
 				WaveCompleted();
+				if (state != SpawnState.DONE)
+				{
+					Upgrade();
+				}
 			}
 			else
 			{
@@ -132,6 +137,11 @@ public class WaveSpawner : MonoBehaviour
 
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
 		Instantiate(_enemy, _sp.position, _sp.rotation);
+	}
+
+	void Upgrade()
+	{
+		upgradeAction.raiseNoArgs();
 	}
 
 }

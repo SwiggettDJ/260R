@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class PlayerHealth : EntityBase
 {
     public GameAction sendHealthAction;
+    public GameAction gameOverAction;
     private void Start()
     {
         maxHealth = 100;
@@ -25,7 +26,7 @@ public class PlayerHealth : EntityBase
 
     protected override void Death()
     {
-        print("You died!");
+        gameOverAction.raiseNoArgs();
     }
     
 }
