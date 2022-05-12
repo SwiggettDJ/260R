@@ -16,12 +16,13 @@ public class PlayerHealth : EntityBase
 
     public override void Damage(float damage)
     {
-        currentHealth -= damage;
-        sendHealthAction.RaiseAction(currentHealth);
-        if (currentHealth <= 0f)
-        {
-            Death();
-        }
+        sendHealthAction.RaiseAction(currentHealth - damage);
+        base.Damage(damage);
+    }
+
+    protected override void GetDamageMaterial()
+    {
+        matList = GetComponentInChildren<SkinnedMeshRenderer>().materials;
     }
 
     protected override void Death()

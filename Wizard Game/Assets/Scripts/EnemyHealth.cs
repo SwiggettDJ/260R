@@ -11,4 +11,5 @@ public class EnemyHealth : EntityBase
         maxHealth = setMaxHealth;
         initialize();
     }
+
 }
