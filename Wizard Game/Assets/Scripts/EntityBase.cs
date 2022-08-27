@@ -47,9 +47,12 @@ public abstract class EntityBase : MonoBehaviour
     }
     IEnumerator Flash(float duration)
     {
-        damageMat.SetFloat("_Opacity", 1);
-        yield return new WaitForSeconds(duration);
-        damageMat.SetFloat("_Opacity", 0);
+        if (damageMat.GetFloat("_Opacity") != 1)
+        {
+            damageMat.SetFloat("_Opacity", 1);
+            yield return new WaitForSeconds(duration);
+            damageMat.SetFloat("_Opacity", 0);
+        }
     }
 
 }
